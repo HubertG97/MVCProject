@@ -17,8 +17,8 @@ class CreateCryptocurrenciesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('ticker');
-            $table->string('website');
-            $table->string('twitter');
+            $table->string('website')->nullable();
+            $table->string('twitter')->nullable();
             $table->timestamps();
         });
     }

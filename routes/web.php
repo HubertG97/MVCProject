@@ -20,3 +20,6 @@ Route::get('profile', function () {
     return '<h1>This is profile page</h1>';
 })->middleware('verified');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::view('add', 'addcrypto');
+Route::post('add', 'CryptocurrenciesController@store');
