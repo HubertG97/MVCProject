@@ -4,8 +4,13 @@ namespace App;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Cryptocurrency extends Model
 {
     protected $guarded = [];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

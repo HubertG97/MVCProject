@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddEmailVerifiedAtToUsers extends Migration
+class AddUserIdToCryptocurrencies extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddEmailVerifiedAtToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->timestamp('email_verified_at');
+        Schema::table('cryptocurrencies', function (Blueprint $table) {
+            $table->unsignedInteger('user_id');
         });
     }
 
@@ -25,7 +25,7 @@ class AddEmailVerifiedAtToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('cryptocurrencies', function (Blueprint $table) {
             //
         });
     }

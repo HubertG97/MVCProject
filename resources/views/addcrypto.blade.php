@@ -9,13 +9,15 @@
 
                     <div class="card-body">
                         <form action="" method="post" class="pb-5">
-                            <div class="input-group">
-                                <input type="text" name="name">
-                                <input type="text" name="ticker">
-                            </div>
+                            <input class="form-control mb-4" type="text" name="name" placeholder="Name Cryptocurrency">
+                            {{ $errors->first('name') }}
+                            <input class="form-control mb-4" type="text" name="ticker" placeholder="Ticker">
+                            {{ $errors->first('ticker') }}
+                            <br>
                             <button type="submit">Add</button>
                             @csrf
                         </form>
+
                     </div>
                 </div>
             </div>
