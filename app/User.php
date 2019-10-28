@@ -47,6 +47,10 @@ class User extends Authenticatable
         return $this->hasMany(Cryptocurrency::class);
     }
 
+    public function ratings(){
+        return $this->hasMany(Rating::class);
+    }
+
     public function addRole(string $role)
     {
         $roles = $this->getRoles();

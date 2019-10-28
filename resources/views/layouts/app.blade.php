@@ -37,7 +37,10 @@
                             <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/add">Add Cryptocurrency</a>
+                            <a class="nav-link" href="/cryptocurrencies/create">Add Cryptocurrency</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cryptocurrencies">My Cryptocurrencies</a>
                         </li>
                     </ul>
 

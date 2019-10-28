@@ -11,6 +11,8 @@
 |
 */
 
+use App\Cryptocurrency;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,7 +21,10 @@ Auth::routes(['verify' => true]);
 Route::get('profile', function () {
     return '<h1>This is profile page</h1>';
 })->middleware('verified');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('cryptocurrencies', 'CryptocurrenciesController@index');
+Route::get('cryptocurrencies/create', 'CryptocurrenciesController@create');
+Route::post('cryptocurrencies/create', 'CryptocurrenciesController@store');
+Route::post('/', 'RatingsController@store');
+Route::get('cryptocurrencies/{cryptocurrency}', 'CryptocurrenciesController@show');
 
-Route::view('add', 'addcrypto');
-Route::post('add', 'CryptocurrenciesController@store');
