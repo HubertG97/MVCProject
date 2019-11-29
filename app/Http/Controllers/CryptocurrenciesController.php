@@ -11,15 +11,23 @@ use Illuminate\View\View;
 
 class CryptocurrenciesController extends Controller
 {
-    public function index(){
+    public function indexAll(){
 
         $cryptocurrencies = Cryptocurrency::all();
         $likeCount = $this->getLikeCount();
         $dislikeCount = $this->getDislikeCount();
-        return view('cryptocurrencies.index', [
+        return view('home', [
             'cryptocurrencies' => $cryptocurrencies,
             'likeCount' => $likeCount,
             'dislikeCount' => $dislikeCount,
+        ]);
+    }
+
+    public function index(){
+
+        $cryptocurrencies = Cryptocurrency::where('user_id', Auth::id())->get();
+        return view('cryptocurrencies.index', [
+            'cryptocurrencies' => $cryptocurrencies,
         ]);
     }
 
@@ -30,7 +38,7 @@ class CryptocurrenciesController extends Controller
     public function getLikeCount(){
         return $likeCount = DB::table('Ratings')->where([
             ['like', '=', '1'],
-            ['cryptocurrency_id', '=', '2'],
+            ['cryptocurrency_id', '=', '1'],
         ])->count();
 
 
