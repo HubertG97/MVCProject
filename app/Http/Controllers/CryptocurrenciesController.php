@@ -69,8 +69,13 @@ class CryptocurrenciesController extends Controller
         return redirect('cryptocurrencies');
     }
     public function show(Cryptocurrency $cryptocurrency){
-//        $cryptocurrency = Cryptocurrency::where('id', $cryptocurrency)->firstOrFail();
+
 
         return view('cryptocurrencies.show', compact('cryptocurrency'));
+    }
+
+    public function edit(Cryptocurrency $cryptocurrency){
+
+        return view('cryptocurrencies.edit', compact('cryptocurrency'));
     }
 }
