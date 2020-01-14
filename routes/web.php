@@ -22,7 +22,7 @@ Auth::routes(['verify' => true]);
 Route::get('profile', function () {
     return '<h1>This is profile page</h1>';
 })->middleware('verified');
-Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
 Route::get('/', 'CryptocurrenciesController@indexAll')->middleware('auth');
 Route::get('cryptocurrencies', 'CryptocurrenciesController@index')->middleware('auth');
 Route::get('cryptocurrencies/create', 'CryptocurrenciesController@create')->middleware('auth');

@@ -16,8 +16,7 @@
                             @csrf
                         </form>
                         <div>
-                            <p>Likes: {{$likeCount}}</p>
-                            <p>Dislikes: {{$dislikeCount}}</p>
+                            <p>Likes: {{count($cryptocurrency->ratings)}}</p>
                         </div>
 
                     </div>

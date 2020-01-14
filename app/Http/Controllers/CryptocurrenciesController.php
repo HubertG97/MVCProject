@@ -13,19 +13,17 @@ class CryptocurrenciesController extends Controller
 {
     public function indexAll(){
 
-        $cryptocurrencies = Cryptocurrency::all();
-        $likeCount = $this->getLikeCount();
-        $dislikeCount = $this->getDislikeCount();
+        $cryptocurrencies = Cryptocurrency::with('ratings')->get();
+
         return view('home', [
             'cryptocurrencies' => $cryptocurrencies,
-            'likeCount' => $likeCount,
-            'dislikeCount' => $dislikeCount,
         ]);
     }
 
     public function index(){
 
         $cryptocurrencies = Cryptocurrency::where('user_id', Auth::id())->get();
+        dd($cryptocurrencies);
         return view('cryptocurrencies.index', [
             'cryptocurrencies' => $cryptocurrencies,
         ]);
@@ -35,24 +33,7 @@ class CryptocurrenciesController extends Controller
         $cryptocurrencies = Cryptocurrency::all();
         return view('cryptocurrencies.create', compact('cryptocurrencies'));
     }
-    public function getLikeCount(){
-        return $likeCount = DB::table('Ratings')->where([
-            ['like', '=', '1'],
-            ['cryptocurrency_id', '=', '1'],
-        ])->count();
 
-
-
-    }
-    public function getDislikeCount(){
-        return $likeCount = DB::table('Ratings')->where([
-            ['like', '=', '0'],
-            ['cryptocurrency_id', '=', '1'],
-        ])->count();
-
-
-
-    }
     public function store(){
 
         $data = request()->validate([
